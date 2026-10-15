@@ -205,7 +205,9 @@ form.req .note{font-size:.8rem;color:var(--on-slate-mist);line-height:1.45}
 .copy{font:inherit;font-size:.82rem;padding:6px 10px;border:1px solid rgba(255,255,255,.3);background:transparent;color:inherit;cursor:pointer;border-radius:2px}
 .contact-lines{margin-top:34px;display:grid;gap:10px;font-size:.95rem}
 .contact-lines a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
-.contact-lines span{color:var(--on-slate-mist);display:inline-block;width:72px}
+.contact-lines span{color:var(--on-slate-mist);display:inline-block;width:80px;vertical-align:top}
+.contact-lines div{display:grid;grid-template-columns:80px 1fr;gap:8px}
+.contact-lines span{width:auto}
 
 /* Footer */
 footer{border-top:1px solid var(--line);padding-block:40px;font-size:.84rem;color:var(--mist)}
@@ -271,8 +273,7 @@ body.locked{overflow:hidden}
   <div class="wrap">
     <p class="sub">Queenshill is a privately owned developer-operator. We buy well, secure planning, build carefully and return capital to the family offices, institutions and private investors who back our schemes across London, Surrey and Portugal’s Lisbon coast.</p>
     <div class="actions on-dark">
-      <a class="btn solid" href="#track-record">See the track record</a>
-      <a class="btn" href="#partner">Partner with us</a>
+      <a class="btn solid" href="#partner">Partner with us</a>
     </div>
   </div>
   <div class="cap">Lawrence Road, Tottenham Hale</div>
@@ -434,9 +435,9 @@ body.locked{overflow:hidden}
       </ul>
       <div class="contact-lines">
         <div><span>Email</span><a href="mailto:chris@queenshill.co">chris@queenshill.co</a></div>
-        <div><span>Portugal</span><a href="tel:+351910465762">+351 910 465 762</a></div>
-        <div><span>UK</span><a href="tel:+447435350199">+44 7435 350 199</a></div>
-        <div><span>Offices</span>Cascais, Portugal · The Long Barn, Cobham Park Road, Surrey KT11 3NE</div>
+        <div><span>Phone</span><a href="tel:+351910465762">+351 910 465 762</a> · <a href="tel:+447435350199">+44 7435 350 199</a></div>
+        <div><span>Portugal</span>1341 Avenida Sabóia, 2765-279 Monte Estoril, Portugal</div>
+        <div><span>UK</span>First Floor, Unit 55 Ffordd William Morgan, St Asaph Business Park, St Asaph LL17 0JG</div>
       </div>
     </div>
     <div>
@@ -539,14 +540,14 @@ const P = [
   imgs:["assets/ewell-1.jpg","assets/ewell-2.jpg","assets/ewell-3.jpg","assets/ewell-4.jpg"],
   facts:[["2","Houses assembled"],["4","New homes"],["3 + 1","Terraced and detached"]],
   story:["Two neighbouring houses on London Road in Ewell were assembled into one site. Planning was secured for the land behind them, the two existing houses were sold on to reduce the equity at risk, and a mews of three terraced houses and one detached home was built and sold.","A land-assembly deal in the Open Vu mould, executed with a single investor group and senior debt. Capital structure and outcome are shared on request."]},
- {id:"biarritz",chap:"PT",name:"Avenida Biarritz, Monte Estoril",loc:"Cascais, Lisbon",what:"Super-prime villa redevelopment with 180-degree sea views.",equity:"Principal’s own",months:48,status:"In delivery",live:true,
-  imgs:["assets/biarritz-1.jpg","assets/biarritz-3.jpg","assets/biarritz-2.jpg","assets/biarritz-4.jpg"],
-  facts:[["180°","Sea views"],["4 years","Timeline"],["Hold","Let and refinance"]],
-  story:["A villa on a private road off Avenida Biarritz, with 180-degree views over the Atlantic from Monte Estoril, was rebuilt as a super-prime contemporary home: stone, oak and glass over a sunken garage and pool terrace, designed by PHDD Arquitectos.","Queenshill’s first Portuguese scheme established the delivery team now used on every project in the country, with VerdeOeste acting as employer’s agent. On completion the asset will be held, let and refinanced rather than sold."]},
  {id:"quinta-do-lago",chap:"PT",name:"San Lorenzo North, Quinta do Lago",loc:"Algarve",what:"Prime plot acquired and licensed for a super villa with a €15.5m end value.",equity:"€3.5m",months:30,status:"Sold",
   imgs:["assets/qdl-1.jpg","assets/qdl-2.jpg","assets/qdl-3.jpg","assets/qdl-4.jpg"],
   facts:[["€15.5m","Consented end value"],["2.5 years","Timeline"],["Sold","2026"]],
   story:["A prime plot on San Lorenzo North, inside the Quinta do Lago resort, was acquired and taken through the resort’s design review and municipal licensing for a super villa with cinema, spa, gym and wine cellar around a central pool courtyard.","The licensed plot was marketed through Savills and Knight Frank and sold in 2026, returning capital without Queenshill taking construction risk on a villa of this scale."]},
+ {id:"biarritz",chap:"PT",name:"Avenida Biarritz, Monte Estoril",loc:"Cascais, Lisbon",what:"Super-prime villa redevelopment with 180-degree sea views.",equity:"Principal’s own",months:48,status:"In delivery",live:true,
+  imgs:["assets/biarritz-1.jpg","assets/biarritz-3.jpg","assets/biarritz-2.jpg","assets/biarritz-4.jpg"],
+  facts:[["180°","Sea views"],["4 years","Timeline"],["Hold","Let and refinance"]],
+  story:["A villa on a private road off Avenida Biarritz, with 180-degree views over the Atlantic from Monte Estoril, was rebuilt as a super-prime contemporary home: stone, oak and glass over a sunken garage and pool terrace, designed by PHDD Arquitectos.","Queenshill’s first Portuguese scheme established the delivery team now used on every project in the country, with VerdeOeste acting as employer’s agent. On completion the asset will be held, let and refinanced rather than sold."]},
  {id:"sintra",chap:"PT",name:"Casa Chão de Meninos, Sintra",loc:"São Pedro de Sintra, Lisbon",what:"Historic house in the Sintra hills rebuilt as a modern villa with pool and annex.",equity:"€1.0m",months:24,status:"Completing 2026",live:true,
   imgs:["assets/hero-sintra.jpg","assets/sintra-2.jpg","assets/sintra-3.jpg","assets/sintra-1.jpg"],
   facts:[["Historic","Original house"],["Pool + annex","Added"],["For sale","Private campaign"]],
