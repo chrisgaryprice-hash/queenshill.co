@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Queenshill</title>
+
+<meta name="description" content="Queenshill is a privately owned property development and investment company. Residential schemes delivered in London, Surrey and Portugal since 2014.">
+<link rel="icon" href="assets/q-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Figtree:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a prospectus, not a brochure. Left-aligned on a 12-column grid, full-bleed photography,
+   and a ledger of schemes as the centrepiece. Limestone, charcoal and a trace of verdigris. */
+:root{
+  --paper:#F3F1EC;      /* limestone */
+  --stone:#E6E2D9;      /* secondary surface */
+  --ink:#1B2022;        /* charcoal text */
+  --slate:#232B2D;      /* dark bands */
+  --slate-2:#2E3739;
+  --mist:#687170;       /* secondary text */
+  --line:#D3CEC3;
+  --accent:#3C6A64;     /* verdigris */
+  --accent-ink:#F3F1EC;
+  --on-slate:#ECE8DF;
+  --on-slate-mist:#A9B0AD;
+  --serif:"Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  --max:1240px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141819; --stone:#1D2325; --ink:#ECE8DF; --slate:#0E1112; --slate-2:#181D1F;
+    --mist:#9AA29F; --line:#2C3436; --accent:#7FB3AB; --accent-ink:#0E1112;
+    --on-slate:#ECE8DF; --on-slate-mist:#A9B0AD; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141819; --stone:#1D2325; --ink:#ECE8DF; --slate:#0E1112; --slate-2:#181D1F;
+  --mist:#9AA29F; --line:#2C3436; --accent:#7FB3AB; --accent-ink:#0E1112;
+  --on-slate:#ECE8DF; --on-slate-mist:#A9B0AD; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.4rem,5.2vw,4.6rem)}
+h2{font-size:clamp(1.9rem,3.4vw,2.9rem)}
+h3{font-size:1.45rem;line-height:1.2}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.section{padding-block:clamp(64px,8vw,120px)}
+.lead{font-family:var(--serif);font-size:clamp(1.35rem,2vw,1.75rem);line-height:1.35;font-weight:300}
+.muted{color:var(--mist)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.4em;border:1px solid currentColor;border-radius:2px;text-decoration:none;font-weight:500;font-size:.95rem;background:transparent;color:inherit;cursor:pointer;font-family:var(--sans);transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.on-dark .btn:hover{background:var(--on-slate);color:var(--slate);border-color:var(--on-slate)}
+.on-dark .btn.solid{background:var(--on-slate);color:var(--slate);border-color:var(--on-slate)}
+.on-dark .btn.solid:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.num{font-variant-numeric:tabular-nums}
+
+/* Header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .q{width:34px;height:34px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-size:1.35rem;line-height:1;border-radius:1px}
+.brand .word{font-family:var(--serif);font-size:1.3rem;letter-spacing:.2em;text-transform:uppercase}
+.brand small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.08em;text-transform:none;color:var(--mist);margin-top:1px}
+nav.main{display:flex;gap:28px;font-size:.92rem}
+nav.main a{text-decoration:none;color:var(--mist);transition:color .15s}
+nav.main a:hover{color:var(--ink)}
+nav.main a.cta{color:var(--ink);font-weight:500;border-bottom:1px solid var(--accent)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:2px;padding:8px 10px;font:inherit;color:inherit;cursor:pointer}
+@media (max-width:860px){
+  nav.main{display:none;position:absolute;left:0;right:0;top:68px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px var(--gutter-l) 16px var(--gutter-l)}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  nav.main a.cta{border-bottom:1px solid var(--line)}
+  .menu-btn{display:block}
+}
+
+/* Hero */
+.hero{position:relative;min-height:clamp(560px,76vh,840px);display:flex;align-items:flex-end;color:var(--on-slate);background:var(--slate);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,18,.18) 0%,rgba(14,17,18,.0) 30%,rgba(14,17,18,.72) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(40px,6vw,80px)}
+.hero h1{max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .sub{max-width:52ch;margin-top:22px;font-size:1.05rem;line-height:1.5;color:var(--on-slate);opacity:.92}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero .cap{position:absolute;right:var(--gutter-r);bottom:14px;font-size:.72rem;letter-spacing:.06em;color:var(--on-slate-mist);z-index:1}
+
+/* Fact strip */
+.facts{border-bottom:1px solid var(--line);background:var(--paper)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.facts .f{padding:26px 24px 26px 0;border-right:1px solid var(--line);margin-right:24px}
+.facts .f:last-child{border-right:0;margin-right:0}
+.facts .v{font-family:var(--serif);font-size:2.1rem;line-height:1;font-weight:400}
+.facts .l{font-size:.86rem;color:var(--mist);margin-top:8px;line-height:1.35}
+@media (max-width:860px){.facts .wrap{grid-template-columns:1fr 1fr}.facts .f:nth-child(2){border-right:0;margin-right:0}.facts .f{border-bottom:1px solid var(--line)}.facts .f:nth-child(n+3){border-bottom:0}}
+@media (max-width:460px){.facts .wrap{grid-template-columns:1fr}.facts .f{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding-block:20px}.facts .f:last-child{border-bottom:0}}
+
+/* Intro */
+.two{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.prose p+p{margin-top:1em}
+.prose{max-width:62ch}
+.rule{height:1px;background:var(--line);margin:0}
+
+/* Strands */
+.strands{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.strand{background:var(--paper);padding:34px 32px 36px}
+.strand h3{margin-bottom:12px}
+.strand p{color:var(--mist);font-size:.98rem;max-width:46ch}
+.strand .tag{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px}
+@media (max-width:760px){.strands{grid-template-columns:1fr}}
+
+/* Track record ledger */
+.dark{background:var(--slate);color:var(--on-slate)}
+.dark .muted,.dark .kicker{color:var(--on-slate-mist)}
+.ledger{width:100%;border-collapse:collapse;margin-top:36px;font-size:.95rem;color:var(--on-slate)}
+.ledger th{text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-slate-mist);padding:0 14px 14px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.ledger td{padding:16px 14px 16px 0;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:middle}
+.ledger tr.row{cursor:pointer;transition:background .15s}
+.ledger tr.row:hover td{background:rgba(255,255,255,.04)}
+.ledger .th{width:64px;height:48px;object-fit:cover;border-radius:1px;background:var(--slate-2)}
+.ledger .name{font-family:var(--serif);font-size:1.2rem;line-height:1.15}
+.ledger .loc{color:var(--on-slate-mist);font-size:.86rem;margin-top:3px}
+.ledger .what{max-width:38ch;color:var(--on-slate);opacity:.9}
+.ledger .r{text-align:right;white-space:nowrap}
+.ledger .status{display:inline-block;font-size:.78rem;padding:3px 9px;border:1px solid rgba(255,255,255,.25);border-radius:999px;white-space:nowrap}
+.ledger .status.live{border-color:var(--accent);color:var(--accent)}
+.ledger .open{color:var(--on-slate-mist);font-size:1.1rem}
+.ledger-wrap{overflow-x:auto;margin-left:calc(-1*var(--gutter-l));margin-right:calc(-1*var(--gutter-r));padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.ledger-wrap table{min-width:860px}
+@media (max-width:760px){
+  .ledger-wrap{overflow:visible;margin:0;padding:0}
+  .ledger-wrap table{min-width:0}
+  .ledger thead{display:none}
+  .ledger,.ledger tbody{display:block}
+  .ledger tr.row{display:grid;grid-template-columns:72px 1fr;column-gap:14px;row-gap:4px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .ledger td{display:block;padding:0;border:0}
+  .ledger td:first-child{grid-row:span 5}
+  .ledger .th{width:72px;height:72px}
+  .ledger .what{font-size:.9rem;margin-top:4px}
+  .ledger .r{text-align:left;white-space:normal;font-size:.86rem;color:var(--on-slate-mist);margin-top:4px}
+  .ledger .r::before{content:attr(data-l) ": ";}
+  .ledger td.open{display:none}
+  .ledger .status{margin-top:8px}
+}
+.ledger-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.gate{margin-top:40px;padding:28px 30px;border:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.gate p{max-width:60ch;color:var(--on-slate-mist);font-size:.95rem}
+.gate strong{color:var(--on-slate);font-weight:500;display:block;font-family:var(--serif);font-size:1.35rem;margin-bottom:6px}
+@media (max-width:700px){.gate{grid-template-columns:1fr}}
+.chapter{margin-top:56px}
+.chapter:first-of-type{margin-top:0}
+.chapter .ch{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.chapter .ch h3{font-size:1.6rem}
+.chapter .ch span{color:var(--on-slate-mist);font-size:.9rem}
+
+/* Method (sequence) */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;margin-top:48px}
+.step{counter-increment:s;border-top:1px solid var(--ink);padding-top:18px}
+.step::before{content:counter(s,decimal-leading-zero);font-family:var(--serif);font-size:1.6rem;display:block;margin-bottom:14px;color:var(--mist)}
+.step h3{font-size:1.25rem;margin-bottom:10px}
+.step p{font-size:.93rem;color:var(--mist)}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.steps{grid-template-columns:1fr;gap:22px}}
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.term{background:var(--stone);padding:26px 28px}
+.term .v{font-family:var(--serif);font-size:1.9rem;line-height:1.05}
+.term .l{font-size:.86rem;color:var(--mist);margin-top:8px}
+@media (max-width:700px){.terms{grid-template-columns:1fr}}
+
+/* Markets */
+.markets{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px;max-width:900px}
+.market img{aspect-ratio:4/3;object-fit:cover;width:100%;max-width:100%;filter:saturate(.9)}
+.market h3{margin-top:18px}
+.market p{color:var(--mist);font-size:.95rem;margin-top:8px;max-width:40ch}
+.market .when{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:14px;font-weight:500}
+@media (max-width:820px){.markets{grid-template-columns:1fr}}
+
+/* About */
+.about{display:grid;grid-template-columns:4fr 7fr;gap:clamp(32px,6vw,96px);align-items:start}
+.about .portrait{aspect-ratio:4/5;background:var(--stone);display:grid;place-items:center;border:1px solid var(--line);max-width:100%}
+.about .portrait img{width:100%;height:100%;object-fit:cover}
+.about .portrait .ph{font-family:var(--serif);font-size:6rem;color:var(--line)}
+.about .name{font-family:var(--serif);font-size:1.9rem;margin-bottom:4px}
+.about .role{color:var(--mist);margin-bottom:22px}
+.about .links{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about .portrait{max-width:320px}}
+
+/* Partner */
+.partner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+@media (max-width:860px){.partner{grid-template-columns:1fr}}
+.who{list-style:none;padding:0;margin:26px 0 0}
+.who li{padding:16px 0;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:150px 1fr;gap:16px;font-size:.95rem}
+.who li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.who li b{font-weight:500}
+.who li span{color:var(--on-slate-mist)}
+@media (max-width:520px){.who li{grid-template-columns:1fr;gap:4px}}
+form.req{display:grid;gap:14px;margin-top:8px}
+form.req label{display:grid;gap:6px;font-size:.84rem;color:var(--on-slate-mist)}
+form.req input,form.req select,form.req textarea{font:inherit;font-size:.98rem;padding:12px 12px;background:var(--slate-2);border:1px solid rgba(255,255,255,.18);color:var(--on-slate);border-radius:2px;min-width:0;width:100%}
+form.req textarea{min-height:92px;resize:vertical}
+form.req .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){form.req .grid2{grid-template-columns:1fr}}
+form.req .note{font-size:.8rem;color:var(--on-slate-mist);line-height:1.45}
+.sent{display:none;border:1px solid var(--accent);padding:22px 24px;margin-top:8px}
+.sent.show{display:block}
+.sent .addr{font-family:var(--sans);font-size:1.05rem;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.copy{font:inherit;font-size:.82rem;padding:6px 10px;border:1px solid rgba(255,255,255,.3);background:transparent;color:inherit;cursor:pointer;border-radius:2px}
+.contact-lines{margin-top:34px;display:grid;gap:10px;font-size:.95rem}
+.contact-lines a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.contact-lines span{color:var(--on-slate-mist);display:inline-block;width:72px}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:40px;font-size:.84rem;color:var(--mist)}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer .disc{max-width:72ch;line-height:1.5}
+footer a{text-decoration:none;border-bottom:1px solid var(--line)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:stretch;justify-content:flex-end;background:rgba(14,17,18,.6)}
+.modal.open{display:flex}
+.panel{width:min(880px,100%);background:var(--paper);color:var(--ink);height:100%;overflow-y:auto;padding:0 0 48px;box-shadow:-20px 0 60px rgba(0,0,0,.3)}
+.panel .top{position:sticky;top:0;background:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:16px var(--gutter-r) 16px var(--gutter-l);border-bottom:1px solid var(--line);z-index:1}
+.panel .top .k{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+.panel .close{font:inherit;background:none;border:1px solid var(--line);border-radius:2px;padding:6px 12px;cursor:pointer;color:inherit}
+.panel .body{padding:28px var(--gutter-r) 0 var(--gutter-l)}
+.panel h2{font-size:clamp(1.8rem,3vw,2.4rem)}
+.panel .where{color:var(--mist);margin-top:6px}
+.panel .gallery{display:grid;grid-template-columns:2fr 1fr;grid-auto-rows:220px;gap:8px;margin-top:26px}
+.panel .gallery img{width:100%;height:100%;object-fit:cover;max-width:100%}
+.panel .gallery img:first-child{grid-row:span 2}
+.panel .gallery.one{grid-template-columns:1fr}
+.panel .gallery.one img:first-child{grid-row:span 1;height:380px}
+.panel .gallery.two img:first-child{grid-row:span 1}
+@media (max-width:600px){.panel .gallery{grid-template-columns:1fr;grid-auto-rows:200px}.panel .gallery img:first-child{grid-row:span 1}}
+.panel .facts2{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px}
+.panel .facts2 div{background:var(--stone);padding:16px 18px}
+.panel .facts2 .v{font-family:var(--serif);font-size:1.5rem;line-height:1.05}
+.panel .facts2 .l{font-size:.8rem;color:var(--mist);margin-top:6px}
+.panel .story{margin-top:26px;max-width:62ch}
+.panel .story p+p{margin-top:1em}
+.panel .gated{margin-top:26px;padding:18px 20px;border:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;font-size:.92rem}
+.panel .gated span{color:var(--mist)}
+@media (max-width:520px){.panel .facts2{grid-template-columns:1fr}}
+body.locked{overflow:hidden}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Queenshill home">
+      <span class="q" aria-hidden="true">Q</span>
+      <span><span class="word">Queenshill</span><small>Property Investment &amp; Development</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#track-record">Track record</a>
+      <a href="#approach">How we work</a>
+      <a href="#markets">Markets</a>
+      <a href="#about">Leadership</a>
+      <a href="#partner" class="cta">Partner with us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <img src="assets/hero-lawrence.jpg" alt="Lawrence Road, Tottenham Hale: 47 apartments over a commercial ground floor, lit at dusk" fetchpriority="high">
+  <div class="wrap">
+    <h1>Property development and investment, delivered since 2014.</h1>
+    <p class="sub">Queenshill is a privately owned developer-operator. We buy well, secure planning, build carefully and return capital to the family offices, institutions and private investors who back our schemes across London, Surrey and Portugal’s Lisbon coast.</p>
+    <div class="actions on-dark">
+      <a class="btn solid" href="#track-record">See the track record</a>
+      <a class="btn" href="#partner">Partner with us</a>
+    </div>
+  </div>
+  <div class="cap">Lawrence Road, Tottenham Hale</div>
+</section>
+
+<section class="facts" aria-label="Key facts">
+  <div class="wrap">
+    <div class="f"><div class="v num">2014</div><div class="l">Founded in London. Privately owned, no outside shareholders.</div></div>
+    <div class="f"><div class="v num">13</div><div class="l">Schemes delivered or in delivery across the UK and Portugal.</div></div>
+    <div class="f"><div class="v num">£18.7m + €9m</div><div class="l">Partner equity deployed in the UK and Portugal respectively.</div></div>
+    <div class="f"><div class="v">2 markets</div><div class="l">London &amp; Surrey, and Portugal’s Lisbon coast and Algarve.</div></div>
+  </div>
+</section>
+
+<section class="section" id="who">
+  <div class="wrap two">
+    <div>
+      <p class="kicker">Who we are</p>
+      <h2 style="margin-top:14px">A small firm that buys at a discount, adds value with its own hands on the project, and exits on its own terms.</h2>
+    </div>
+    <div class="prose">
+      <p>Queenshill was founded by Chris Price in 2014 after a career in financial services. The model has not changed since: find residential sites that others have overlooked or cannot unlock, buy them at a meaningful discount to completed value, take them through planning and construction with a hand-picked professional team, and sell, let or refinance at the right moment.</p>
+      <p>Our investors are listed corporates, family offices and ultra-high-net-worth individuals. They are paid first. Queenshill takes its profit only after investors have received their prioritised return, which keeps every decision on site aligned with the people whose capital is at work.</p>
+      <p>Eight schemes were delivered in London and Surrey between 2014 and 2021, from a converted MOT garage in Brixton to a 47-apartment building in Tottenham Hale. Since 2022 the same discipline has been applied to prime and super-prime residential on Portugal’s Lisbon coast and in the Algarve, working through Portuguese companies with local delivery partners.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="strands">
+      <div class="strand">
+        <div class="tag">Core</div>
+        <h3>Value-add residential</h3>
+        <p>Buy, refurbish or rebuild, then refinance or sell. Single villas to small apartment schemes, 12 to 36 months, bought at a meaningful discount to completed value.</p>
+      </div>
+      <div class="strand">
+        <div class="tag">Hold</div>
+        <h3>Build-to-rent and income assets</h3>
+        <p>Schemes designed from day one to be let and refinanced rather than sold, building a portfolio structured for an institutional exit.</p>
+      </div>
+      <div class="strand">
+        <div class="tag">Growing</div>
+        <h3>Commercial and mixed use</h3>
+        <p>Pubs, warehouses, community buildings and offices repositioned into residential-led mixed use, with commercial income retained where it strengthens the scheme.</p>
+      </div>
+      <div class="strand">
+        <div class="tag">Through Open Vu</div>
+        <h3>Strategic land</h3>
+        <p>Land promotion and assembly in the UK through our sister company Open Vu: planning secured for landowners, sites assembled from several owners, and modular delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="track-record">
+  <div class="wrap">
+    <div class="ledger-head">
+      <div>
+        <p class="kicker">Track record</p>
+        <h2 style="margin-top:14px;max-width:18ch">Thirteen schemes, two countries, one method.</h2>
+      </div>
+      <p class="muted" style="max-width:44ch;font-size:.95rem">Select a scheme for photographs and the story of the deal. Project-level returns are shared by Chris personally with qualifying investors who ask.</p>
+    </div>
+
+    <div class="chapter">
+      <div class="ch"><h3>London and Surrey</h3><span>2014 to 2021</span></div>
+      <div class="ledger-wrap">
+      <table class="ledger" id="ledgerUK">
+        <thead><tr><th></th><th>Scheme</th><th>What we did</th><th class="r">Partner equity</th><th class="r">Duration</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="chapter">
+      <div class="ch"><h3>Portugal</h3><span>2022 to present</span></div>
+      <div class="ledger-wrap">
+      <table class="ledger" id="ledgerPT">
+        <thead><tr><th></th><th>Scheme</th><th>What we did</th><th class="r">Partner equity</th><th class="r">Duration</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="gate on-dark">
+      <div>
+        <strong>The full track record</strong>
+        <p>Annualised returns on equity, investor counts and the capital structure of every scheme are not published. They are shared personally by Chris, by email, with family offices, institutions and qualifying private investors who introduce themselves first.</p>
+      </div>
+      <a class="btn solid" href="#partner">Request it from Chris</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <p class="kicker">How we work</p>
+        <h2 style="margin-top:14px">Risk is managed before the purchase, not after it.</h2>
+      </div>
+      <div class="prose">
+        <p>Most development losses are made on the day the site is bought. So we are hard to please at acquisition: every site is underwritten on a conservative appraisal against a strict internal discount to completed value, and if it does not clear that bar we do not chase it, however good it looks.</p>
+        <p>Everything after that is about keeping the plan on the rails. Industry-leading architects, cost consultants and employer’s agents are appointed on every scheme, construction is procured on fixed terms with retentions and late penalties, and investors receive a prioritised return ahead of Queenshill’s own profit.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><h3>Source</h3><p>Off-market and probate stock, land assembly and tired buildings, found through a network built over twelve years rather than through agents’ mailing lists.</p></div>
+      <div class="step"><h3>Underwrite</h3><p>Base and conservative cases on every deal. Independent valuation and agent evidence before exchange, never a hoped-for end value.</p></div>
+      <div class="step"><h3>Plan</h3><p>Planning and licensing handled with specialist consultants. Several schemes were sold with planning secured, taking construction risk off the table entirely.</p></div>
+      <div class="step"><h3>Build</h3><p>Fixed-price contracts, employer’s agent oversight, weekly site attention and written approval for every variation.</p></div>
+      <div class="step"><h3>Exit</h3><p>Sell into a prepared market, or let and refinance to hold the asset and release partner capital. The route is decided at underwriting, not at the end.</p></div>
+    </div>
+
+    <div class="terms">
+      <div class="term"><div class="v">£250k to €5m</div><div class="l">Investor equity commitment per scheme</div></div>
+      <div class="term"><div class="v">12 to 36 months</div><div class="l">Typical project timeline from purchase to exit</div></div>
+      <div class="term"><div class="v">Investors first</div><div class="l">Prioritised return before Queenshill’s profit share</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="markets" style="padding-top:0">
+  <div class="wrap">
+    <div class="rule"></div>
+    <div style="padding-top:clamp(64px,8vw,120px)">
+      <p class="kicker">Where we work</p>
+      <h2 style="margin-top:14px;max-width:20ch">Two markets we know on the ground.</h2>
+    </div>
+    <div class="markets">
+      <div class="market">
+        <img src="assets/stoke-1.jpg" alt="Red-brick apartments on Stoke Road, Cobham">
+        <h3>London and Surrey</h3>
+        <p>Where Queenshill began. Brownfield conversions in Brixton, Tottenham, Clapham and Kentish Town; prime houses and apartments in the Cobham, Oxshott and West Horsley corridor. Strategic land through Open Vu.</p>
+        <div class="when">Since 2014</div>
+      </div>
+      <div class="market">
+        <img src="assets/qdl-2.jpg" alt="Pool terrace of a villa at Quinta do Lago">
+        <h3>Lisbon coast and Algarve</h3>
+        <p>Prime and super-prime villas in Monte Estoril, Cascais and Sintra, and a licensed plot at Quinta do Lago. Delivered through Portuguese companies with local architects and employer’s agents, with Chris resident in Cascais.</p>
+        <div class="when">Since 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about" style="background:var(--stone)">
+  <div class="wrap about">
+    <div class="portrait" id="portrait"><img src="assets/chris-price.jpg" alt="Chris Price, Founder and Director of Queenshill" loading="lazy"></div>
+    <div>
+      <p class="kicker">Leadership</p>
+      <div class="name" style="margin-top:14px">Chris Price</div>
+      <div class="role">Founder and Director, Queenshill Investments Ltd</div>
+      <div class="prose">
+        <p>Chris founded Queenshill in London in 2014 after revenue-generating roles at blue-chip firms in financial services. He leads origination, deal evaluation, partner management and delivery, and he is personally on every site every week.</p>
+        <p>His network spans the industry professionals, corporate investors and ultra-high-net-worth individuals who have backed Queenshill’s schemes, together with the agents, lenders and consultants who bring sites and finance to the table. He has lived in Cascais since 2022, holds British, Portuguese and South African connections, and relocates to the Western Cape at the end of 2026.</p>
+        <p>He is also co-founder of Open Vu, a UK land promotion and modular development company, through which Queenshill accesses strategic land and planning expertise.</p>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/chris-price-5793a148/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.openvu.co.uk" target="_blank" rel="noopener">Open Vu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="partner">
+  <div class="wrap partner">
+    <div>
+      <p class="kicker">Partner with us</p>
+      <h2 style="margin-top:14px">Capital that wants an operator, not just a deal.</h2>
+      <p class="lead" style="margin-top:22px;max-width:30ch">We work with a small number of partners on each scheme, and we co-invest.</p>
+      <ul class="who">
+        <li><b>Family offices</b><span>Co-investment or joint venture in individual schemes, or a programme of them, in the UK or Portugal.</span></li>
+        <li><b>Institutions</b><span>Forward-funding and build-to-rent partnerships where a portfolio is being assembled for an institutional exit.</span></li>
+        <li><b>Private investors</b><span>Prioritised-return equity in single schemes from £250,000, with regular reporting and site visits.</span></li>
+        <li><b>Lenders and agents</b><span>Development and investment finance, and off-market sites that fit the method above.</span></li>
+      </ul>
+      <div class="contact-lines">
+        <div><span>Email</span><a href="mailto:chris@queenshill.co">chris@queenshill.co</a></div>
+        <div><span>Portugal</span><a href="tel:+351910465762">+351 910 465 762</a></div>
+        <div><span>UK</span><a href="tel:+447435350199">+44 7435 350 199</a></div>
+        <div><span>Offices</span>Cascais, Portugal · The Long Barn, Cobham Park Road, Surrey KT11 3NE</div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:1.45rem">Request the track record</h3>
+      <p class="muted" style="margin:10px 0 22px;font-size:.95rem">There is nothing to download. Tell Chris who you are and what you are looking for; this sends him an email, and he replies personally, usually within two working days.</p>
+      <form class="req on-dark" id="reqForm" novalidate>
+        <div class="grid2">
+          <label>Name<input type="text" id="fName" name="name" required autocomplete="name"></label>
+          <label>Firm<input type="text" id="fFirm" name="firm" autocomplete="organization"></label>
+        </div>
+        <label>Email<input type="email" id="fEmail" name="email" required autocomplete="email"></label>
+        <label>I am a<select id="fType" name="type">
+          <option>Family office</option><option>Institution or fund</option><option>Private investor</option><option>Lender</option><option>Agent or introducer</option><option>Other</option>
+        </select></label>
+        <label>What are you looking for?<textarea id="fMsg" name="message" placeholder="Markets, ticket size, hold period, anything else useful"></textarea></label>
+        <p class="note">By sending this request you confirm you are a professional, high-net-worth or sophisticated investor, or are enquiring on behalf of one. Nothing on this site is an offer or invitation to invest.</p>
+        <div><button class="btn solid" type="submit">Send request</button></div>
+      </form>
+      <div class="sent" id="sent" role="status">
+        <strong style="font-family:var(--serif);font-size:1.3rem;font-weight:400">Thank you. Your request is ready to send.</strong>
+        <p class="muted" style="margin-top:8px;font-size:.92rem">Your email app should have opened with the request drafted. If it did not, email the same details to the address below and Chris will reply personally.</p>
+        <div class="addr"><span id="addrText">chris@queenshill.co</span><button class="copy" id="copyBtn" type="button">Copy address</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong style="font-family:var(--serif);font-weight:400;font-size:1.1rem;color:var(--ink)">Queenshill Investments Ltd</strong></p>
+      <p class="disc" style="margin-top:10px">Registered in England and Wales, company number 09241642. Queenshill Investments Ltd is not authorised or regulated by the Financial Conduct Authority. This website is for information only. It does not constitute, and should not be construed as, an offer, invitation or inducement to invest. Investment opportunities are communicated only to persons to whom they may lawfully be communicated, including investment professionals and certified high-net-worth or sophisticated investors. Capital is at risk and past performance is not a guide to future returns.</p>
+      <p class="disc" style="margin-top:10px">Photographs and visualisations show completed schemes, works in progress and consented designs. © Queenshill Investments Ltd <span id="yr">2026</span>.</p>
+    </div>
+    <ul>
+      <li><a href="#track-record">Track record</a></li>
+      <li><a href="#approach">How we work</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#about">Leadership</a></li>
+      <li><a href="#partner">Partner with us</a></li>
+    </ul>
+    <ul>
+      <li><a href="https://www.openvu.co.uk" target="_blank" rel="noopener">Open Vu</a></li>
+      <li><a href="https://www.linkedin.com/in/chris-price-5793a148/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:chris@queenshill.co">chris@queenshill.co</a></li>
+      <li><a href="#top">Privacy and legal</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="panel">
+    <div class="top"><span class="k" id="mKicker">Scheme</span><button class="close" id="mClose" type="button">Close</button></div>
+    <div class="body">
+      <h2 id="mTitle"></h2>
+      <p class="where" id="mWhere"></p>
+      <div class="gallery" id="mGallery"></div>
+      <div class="facts2" id="mFacts"></div>
+      <div class="story" id="mStory"></div>
+      <div class="gated"><span>Annualised return on equity and investor structure for this scheme are shared by Chris personally, on request.</span><a class="btn" href="#partner" id="mReq">Email Chris</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const P = [
+ {id:"lawrence-road",chap:"UK",name:"Lawrence Road, Tottenham Hale",loc:"London N15",what:"Former industrial site redeveloped into 47 apartments and a floor of commercial space.",equity:"£5.4m",months:28,status:"Sold",
+  imgs:["assets/lawrence-2.jpg","assets/lawrence-3.jpg","assets/lawrence-4.jpg"],
+  facts:[["47","Apartments"],["1","Commercial floor"],["3","Investors"]],
+  story:["Queenshill’s largest UK scheme. A redundant industrial site in Tottenham Hale’s regeneration area was acquired and taken through planning for a 47-apartment building with a full commercial ground floor, arranged around a landscaped courtyard.","The scheme was fully sold, with a proportion of homes sold through the Help to Buy scheme. The development was delivered alongside Queenshill’s sister company Open Vu, where it is known as Mono House."]},
+ {id:"st-marys",chap:"UK",name:"St Mary’s Community Centre, Clapham Common",loc:"London SW4",what:"Community centre redeveloped: 14 apartments, café and gym, with a new centre gifted back to the church.",equity:"£3.1m",months:24,status:"Sold",
+  imgs:["assets/stmarys-1.jpg","assets/stmarys-2.jpg","assets/stmarys-3.jpg"],
+  facts:[["14","Private apartments"],["1","Investor"],["Café + gym","Commercial"]],
+  story:["A tired community building beside Clapham Common was redeveloped into fourteen private apartments with a corner café and gym at ground level. As part of the deal a new community centre was built and gifted back to the church and the surrounding community.","Schemes of this kind, where the land comes with an obligation that deters most buyers, are where Queenshill’s method works best: the obligation is priced in, the planning case is strengthened by it, and the community gets something lasting."]},
+ {id:"kentish-town",chap:"UK",name:"180 Kentish Town Road",loc:"London NW5",what:"Former public house redeveloped into 7 apartments and a restaurant.",equity:"£3.1m",months:18,status:"Sold",
+  imgs:["assets/kentish-1.jpg","assets/kentish-2.jpg"],
+  facts:[["7","Apartments"],["1","Restaurant"],["3","Investors"]],
+  story:["A former pub on a prominent corner of Kentish Town Road was redeveloped into seven loft-style apartments above a restaurant. The upper floors were delivered using modular construction, with the pub frontage retained and restored.","Homes were sold with Help to Buy. The restaurant unit provides long-term commercial income for its owner on one of north London’s busiest high streets."]},
+ {id:"lawrence-square",chap:"UK",name:"Lawrence Square Live-Work Units, Tottenham",loc:"London N15",what:"Live-work units bought at a significant discount; change of use of the commercial element to residential.",equity:"£2.2m",months:24,status:"Sold",
+  imgs:["assets/lawrencesq-1.jpg"],
+  facts:[["Discount","Purchase basis"],["Change of use","Planning route"],["3","Investors"]],
+  story:["A block of live-work units was acquired at a significant discount to residential value, with the goal of obtaining change of use on the commercial elements. The planning uplift, rather than construction, was the source of value.","A low-build, planning-led deal that shows the other half of the Queenshill method: buying the problem that others will not take on, and solving it with a specialist planning team."]},
+ {id:"stoke-road",chap:"UK",name:"36 Stoke Road, Cobham",loc:"Surrey KT11",what:"Probate purchase of a bungalow on a large plot in prime Cobham; planning secured for luxury apartments and sold.",equity:"£1.5m",months:30,status:"Sold with planning",
+  imgs:["assets/stoke-1.jpg","assets/stoke-2.jpg"],
+  facts:[["Probate","Acquisition"],["Apartments","Consented use"],["1","Investor"]],
+  story:["A small bungalow on a large piece of land in one of Cobham’s best redevelopment locations was acquired through probate. Queenshill took the site through planning for a scheme of luxury apartments and sold it with consent in place.","Prime Surrey is where Queenshill’s patient, low-build approach pays: a long planning road, a single investor, and an exit into one of the strongest house-and-apartment markets outside London."]},
+ {id:"dalberg",chap:"UK",name:"124 Dalberg Road, Brixton",loc:"London SW2",what:"Former MOT warehouse redeveloped into 6 apartments and commercial space.",equity:"£1.3m",months:17,status:"Sold",
+  imgs:["assets/dalberg-1.jpg"],
+  facts:[["6","Apartments"],["Ground floor","Commercial"],["2","Investors"]],
+  story:["A former MOT car-service warehouse on a residential street in Brixton was redeveloped into six apartments over a commercial ground floor, behind a new brick and zinc elevation that sits comfortably between its Victorian neighbours.","The first scheme to prove the Queenshill model in London: light industrial stock bought below its residential value, planning secured, and sold within eighteen months."]},
+ {id:"princes-cottage",chap:"UK",name:"Princes Cottage, Oxshott",loc:"Surrey KT22",what:"Two derelict semis bordering the Crown Estate consented for two new pairs; sold with planning.",equity:"£1.1m",months:8,status:"Sold with planning",
+  imgs:["assets/princes-1.jpg"],
+  facts:[["4","Homes consented"],["8","Months"],["1","Investor"]],
+  story:["Two derelict semi-detached houses on Leatherhead Road, bordering the Crown Estate, were purchased and taken through planning for two new pairs of semi-detached family homes.","The site was sold with planning permission eight months after purchase, returning partner capital without taking any construction risk."]},
+ {id:"east-lane",chap:"UK",name:"27 East Lane, West Horsley",loc:"Surrey KT24",what:"Dilapidated two-storey house rebuilt as a new five-bedroom executive home.",equity:"£1.0m",months:18,status:"Sold",
+  imgs:["assets/horsley-1.jpg"],
+  facts:[["5","Bedrooms"],["New build","Delivery"],["1","Investor"]],
+  story:["A dilapidated two-storey detached house in the Surrey village of West Horsley was acquired and replaced with a new five-bedroom executive home, finished to the standard the Guildford and Horsley market expects.","A single-house scheme with a single investor: the simplest version of the Queenshill method, executed in eighteen months."]},
+ {id:"london-road",chap:"UK",name:"289–291 London Road, Ewell",loc:"Surrey KT17",what:"Two adjoining houses assembled; the existing homes sold on and four new homes built on the land behind.",equity:"£0.55m",months:36,status:"Sold",
+  imgs:["assets/ewell-1.jpg","assets/ewell-2.jpg","assets/ewell-3.jpg","assets/ewell-4.jpg"],
+  facts:[["2","Houses assembled"],["4","New homes"],["3 + 1","Terraced and detached"]],
+  story:["Two neighbouring houses on London Road in Ewell were assembled into one site. Planning was secured for the land behind them, the two existing houses were sold on to reduce the equity at risk, and a mews of three terraced houses and one detached home was built and sold.","A land-assembly deal in the Open Vu mould, executed with a single investor group and senior debt. Capital structure and outcome are shared on request."]},
+ {id:"biarritz",chap:"PT",name:"Avenida Biarritz, Monte Estoril",loc:"Cascais, Lisbon",what:"Super-prime villa redevelopment with 180-degree sea views.",equity:"Principal’s own",months:48,status:"In delivery",live:true,
+  imgs:["assets/biarritz-1.jpg","assets/biarritz-3.jpg","assets/biarritz-2.jpg","assets/biarritz-4.jpg"],
+  facts:[["180°","Sea views"],["4 years","Timeline"],["Hold","Let and refinance"]],
+  story:["A villa on a private road off Avenida Biarritz, with 180-degree views over the Atlantic from Monte Estoril, was rebuilt as a super-prime contemporary home: stone, oak and glass over a sunken garage and pool terrace, designed by PHDD Arquitectos.","Queenshill’s first Portuguese scheme established the delivery team now used on every project in the country, with VerdeOeste acting as employer’s agent. On completion the asset will be held, let and refinanced rather than sold."]},
+ {id:"quinta-do-lago",chap:"PT",name:"San Lorenzo North, Quinta do Lago",loc:"Algarve",what:"Prime plot acquired and licensed for a super villa with a €15.5m end value.",equity:"€3.5m",months:30,status:"Sold",
+  imgs:["assets/qdl-1.jpg","assets/qdl-2.jpg","assets/qdl-3.jpg","assets/qdl-4.jpg"],
+  facts:[["€15.5m","Consented end value"],["2.5 years","Timeline"],["Sold","2026"]],
+  story:["A prime plot on San Lorenzo North, inside the Quinta do Lago resort, was acquired and taken through the resort’s design review and municipal licensing for a super villa with cinema, spa, gym and wine cellar around a central pool courtyard.","The licensed plot was marketed through Savills and Knight Frank and sold in 2026, returning capital without Queenshill taking construction risk on a villa of this scale."]},
+ {id:"sintra",chap:"PT",name:"Casa Chão de Meninos, Sintra",loc:"São Pedro de Sintra, Lisbon",what:"Historic house in the Sintra hills rebuilt as a modern villa with pool and annex.",equity:"€1.0m",months:24,status:"Completing 2026",live:true,
+  imgs:["assets/hero-sintra.jpg","assets/sintra-2.jpg","assets/sintra-3.jpg","assets/sintra-1.jpg"],
+  facts:[["Historic","Original house"],["Pool + annex","Added"],["For sale","Private campaign"]],
+  story:["A historic house above São Pedro de Sintra, within the UNESCO landscape, was bought through a Portuguese company and rebuilt behind its original façade: new structure, services and interiors, a pool, sauna and cold plunge, a garage annex and landscaped gardens.","Delivered under a fixed-price contract with PHDD Arquitectos and sold through a private, off-market campaign to buyers relocating to Portugal. Queenshill’s template for repeatable value-add schemes on the Lisbon coast."]},
+ {id:"saboia",chap:"PT",name:"Avenida Sabóia, Monte Estoril",loc:"Cascais, Lisbon",what:"Detached villa on Monte Estoril’s most prestigious avenue; part-demolition and expansion to a five-bedroom luxury villa, then let and refinanced.",equity:"Principal’s own",months:36,status:"Licensed, in delivery",live:true,
+  imgs:["assets/saboia-1.jpg","assets/saboia-2.jpg","assets/saboia-3.jpg","assets/saboia-4.jpg"],
+  facts:[["5","Bedrooms"],["Licensed","Architecture approved"],["Build, let, refinance","Strategy"]],
+  story:["A two-storey villa on Avenida Sabóia, the highest and most exclusive residential avenue in Monte Estoril and a five-minute walk from Tamariz beach, was acquired outright. Plans are approved for part-demolition and a significant high-specification expansion into a five-bedroom villa.","The strategy is to build, let to a corporate or relocating tenant, and refinance on completion to release capital while holding a long-term income asset in one of the fastest-growing prime markets in Europe."]}
+];
+
+function row(p){
+  const tr=document.createElement("tr"); tr.className="row"; tr.tabIndex=0; tr.setAttribute("role","button"); tr.dataset.id=p.id;
+  const dur = p.months? (p.months%12===0 && p.months>=24 ? (p.months/12)+" years" : p.months+" months") : "On request";
+  tr.innerHTML=`<td><img class="th" src="${p.imgs[0]}" alt="" loading="lazy"></td>
+   <td><div class="name">${p.name}</div><div class="loc">${p.loc}</div></td>
+   <td><div class="what">${p.what}</div></td>
+   <td class="r num" data-l="Partner equity">${p.equity}</td><td class="r num" data-l="Duration">${dur}</td>
+   <td><span class="status${p.live?" live":""}">${p.status}</span></td><td class="open" aria-hidden="true">→</td>`;
+  tr.addEventListener("click",()=>openP(p)); tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openP(p);}});
+  return tr;
+}
+const uk=document.querySelector("#ledgerUK tbody"), pt=document.querySelector("#ledgerPT tbody");
+P.forEach(p=>(p.chap==="UK"?uk:pt).appendChild(row(p)));
+
+const modal=document.getElementById("modal");
+let lastFocus=null;
+function openP(p){
+  lastFocus=document.activeElement;
+  document.getElementById("mKicker").textContent = p.chap==="UK"?"London and Surrey":"Portugal";
+  document.getElementById("mTitle").textContent=p.name;
+  document.getElementById("mWhere").textContent=p.loc+" · "+p.status;
+  const g=document.getElementById("mGallery"); g.innerHTML=""; g.className="gallery"+(p.imgs.length===1?" one":p.imgs.length===2?" two":"");
+  p.imgs.slice(0,3).forEach((s,i)=>{const im=document.createElement("img"); im.src=s; im.alt=p.name+(i?" (view "+(i+1)+")":""); g.appendChild(im);});
+  const f=document.getElementById("mFacts"); f.innerHTML=p.facts.map(x=>`<div><div class="v num">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("");
+  const dur = p.months? (p.months%12===0 && p.months>=24 ? (p.months/12)+" years" : p.months+" months") : "On request";
+  f.innerHTML += `<div><div class="v num">${p.equity}</div><div class="l">Partner equity</div></div><div><div class="v num">${dur}</div><div class="l">Timeline</div></div><div><div class="v">${p.status}</div><div class="l">Status</div></div>`;
+  document.getElementById("mStory").innerHTML=p.story.map(s=>`<p>${s}</p>`).join("");
+  modal.classList.add("open"); document.body.classList.add("locked");
+  document.getElementById("mClose").focus();
+  history.replaceState(null,"","#"+p.id);
+}
+function closeP(){modal.classList.remove("open");document.body.classList.remove("locked");history.replaceState(null,""," ");if(lastFocus)lastFocus.focus();}
+document.getElementById("mClose").addEventListener("click",closeP);
+document.getElementById("mReq").addEventListener("click",closeP);
+modal.addEventListener("click",e=>{if(e.target===modal)closeP();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeP();});
+const h=(location.hash||"").slice(1); const hp=P.find(p=>p.id===h); if(hp){openP(hp);}
+
+const mb=document.getElementById("menuBtn"), nav=document.getElementById("mainNav");
+mb.addEventListener("click",()=>{const o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o);});
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");mb.setAttribute("aria-expanded","false");}));
+
+const form=document.getElementById("reqForm");
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  if(!v("fName")||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("fEmail"))){ (v("fName")?document.getElementById("fEmail"):document.getElementById("fName")).focus(); return; }
+  const body=`Name: ${v("fName")}\nFirm: ${v("fFirm")}\nEmail: ${v("fEmail")}\nInvestor type: ${v("fType")}\n\n${v("fMsg")}\n\nPlease send me the Queenshill track record.`;
+  const href="mailto:chris@queenshill.co?subject="+encodeURIComponent("Track record request – "+v("fName")+(v("fFirm")?", "+v("fFirm"):""))+"&body="+encodeURIComponent(body);
+  try{window.location.href=href;}catch(_){}
+  form.hidden=true; document.getElementById("sent").classList.add("show");
+});
+document.getElementById("copyBtn").addEventListener("click",async function(){
+  const t="chris@queenshill.co"; const b=this;
+  try{await navigator.clipboard.writeText(t); b.textContent="Copied";}
+  catch(_){const r=document.createRange(); r.selectNodeContents(document.getElementById("addrText")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent="Selected";}
+  setTimeout(()=>b.textContent="Copy address",1800);
+});
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
