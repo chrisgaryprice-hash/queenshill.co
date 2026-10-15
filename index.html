@@ -91,11 +91,11 @@ nav.main a.cta{color:var(--ink);font-weight:500;border-bottom:1px solid var(--ac
 
 /* Hero */
 .hero{position:relative;min-height:clamp(560px,76vh,840px);display:flex;align-items:flex-end;color:var(--on-slate);background:var(--slate);overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 45%}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,18,.18) 0%,rgba(14,17,18,.0) 30%,rgba(14,17,18,.72) 100%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(40px,6vw,80px)}
 .hero h1{max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.hero .sub{max-width:52ch;margin-top:22px;font-size:1.05rem;line-height:1.5;color:var(--on-slate);opacity:.92}
+.hero .sub{max-width:52ch;margin-top:0;font-size:1.15rem;line-height:1.5;color:var(--on-slate);opacity:.92}
 .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
 .hero .cap{position:absolute;right:var(--gutter-r);bottom:14px;font-size:.72rem;letter-spacing:.06em;color:var(--on-slate-mist);z-index:1}
 
@@ -124,49 +124,32 @@ nav.main a.cta{color:var(--ink);font-weight:500;border-bottom:1px solid var(--ac
 .strand .tag{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px}
 @media (max-width:760px){.strands{grid-template-columns:1fr}}
 
-/* Track record ledger */
+/* Track record: image-led */
 .dark{background:var(--slate);color:var(--on-slate)}
 .dark .muted,.dark .kicker{color:var(--on-slate-mist)}
-.ledger{width:100%;border-collapse:collapse;margin-top:36px;font-size:.95rem;color:var(--on-slate)}
-.ledger th{text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-slate-mist);padding:0 14px 14px 0;border-bottom:1px solid rgba(255,255,255,.18)}
-.ledger td{padding:16px 14px 16px 0;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:middle}
-.ledger tr.row{cursor:pointer;transition:background .15s}
-.ledger tr.row:hover td{background:rgba(255,255,255,.04)}
-.ledger .th{width:64px;height:48px;object-fit:cover;border-radius:1px;background:var(--slate-2)}
-.ledger .name{font-family:var(--serif);font-size:1.2rem;line-height:1.15}
-.ledger .loc{color:var(--on-slate-mist);font-size:.86rem;margin-top:3px}
-.ledger .what{max-width:38ch;color:var(--on-slate);opacity:.9}
-.ledger .r{text-align:right;white-space:nowrap}
-.ledger .status{display:inline-block;font-size:.78rem;padding:3px 9px;border:1px solid rgba(255,255,255,.25);border-radius:999px;white-space:nowrap}
-.ledger .status.live{border-color:var(--accent);color:var(--accent)}
-.ledger .open{color:var(--on-slate-mist);font-size:1.1rem}
-.ledger-wrap{overflow-x:auto;margin-left:calc(-1*var(--gutter-l));margin-right:calc(-1*var(--gutter-r));padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
-.ledger-wrap table{min-width:860px}
-@media (max-width:760px){
-  .ledger-wrap{overflow:visible;margin:0;padding:0}
-  .ledger-wrap table{min-width:0}
-  .ledger thead{display:none}
-  .ledger,.ledger tbody{display:block}
-  .ledger tr.row{display:grid;grid-template-columns:72px 1fr;column-gap:14px;row-gap:4px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
-  .ledger td{display:block;padding:0;border:0}
-  .ledger td:first-child{grid-row:span 5}
-  .ledger .th{width:72px;height:72px}
-  .ledger .what{font-size:.9rem;margin-top:4px}
-  .ledger .r{text-align:left;white-space:normal;font-size:.86rem;color:var(--on-slate-mist);margin-top:4px}
-  .ledger .r::before{content:attr(data-l) ": ";}
-  .ledger td.open{display:none}
-  .ledger .status{margin-top:8px}
-}
 .ledger-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.gate{margin-top:40px;padding:28px 30px;border:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
-.gate p{max-width:60ch;color:var(--on-slate-mist);font-size:.95rem}
-.gate strong{color:var(--on-slate);font-weight:500;display:block;font-family:var(--serif);font-size:1.35rem;margin-bottom:6px}
-@media (max-width:700px){.gate{grid-template-columns:1fr}}
-.chapter{margin-top:56px}
-.chapter:first-of-type{margin-top:0}
-.chapter .ch{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.chapter{margin-top:64px}
+.chapter .ch{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:28px}
 .chapter .ch h3{font-size:1.6rem}
 .chapter .ch span{color:var(--on-slate-mist);font-size:.9rem}
+.schemes{display:grid;grid-template-columns:1fr 1fr;gap:44px 32px}
+.scheme{cursor:pointer;outline-offset:6px}
+.scheme.lead-card{grid-column:1/-1}
+.scheme .pic{position:relative;overflow:hidden;background:var(--slate-2)}
+.scheme .pic img{width:100%;aspect-ratio:3/2;object-fit:cover;max-width:100%;transition:transform .6s ease}
+.scheme.lead-card .pic img{aspect-ratio:21/9}
+.scheme:hover .pic img{transform:scale(1.025)}
+.scheme .pic .status{position:absolute;left:16px;top:16px;font-size:.76rem;letter-spacing:.06em;padding:5px 11px;background:rgba(14,17,18,.72);color:var(--on-slate);border-radius:999px;backdrop-filter:blur(6px)}
+.scheme .pic .status.live{color:#CFE8E3;border:1px solid rgba(207,232,227,.5)}
+.scheme .cap{display:grid;grid-template-columns:1fr auto;gap:8px 32px;align-items:start;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);margin-top:16px}
+.scheme .name{font-family:var(--serif);font-size:1.6rem;line-height:1.1}
+.scheme.lead-card .name{font-size:2.1rem}
+.scheme .loc{color:var(--on-slate-mist);font-size:.88rem;margin-top:4px}
+.scheme .what{grid-column:1;max-width:52ch;margin-top:10px;font-size:.98rem;opacity:.92}
+.scheme .meta{grid-column:2;grid-row:1/span 2;display:grid;gap:10px;text-align:right;min-width:150px}
+.scheme .meta .v{font-family:var(--serif);font-size:1.35rem;line-height:1}
+.scheme .meta .l{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-slate-mist);margin-top:3px}
+@media (max-width:860px){.schemes{grid-template-columns:1fr;gap:40px}.scheme .pic img,.scheme.lead-card .pic img{aspect-ratio:4/3}.scheme .cap{grid-template-columns:1fr}.scheme .meta{grid-column:1;grid-row:auto;text-align:left;grid-template-columns:1fr 1fr;margin-top:10px}.scheme.lead-card .name{font-size:1.7rem}}
 
 /* Method (sequence) */
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;margin-top:48px}
@@ -284,9 +267,8 @@ body.locked{overflow:hidden}
 
 <main id="top">
 <section class="hero" aria-label="Introduction">
-  <img src="assets/hero-lawrence.jpg" alt="Lawrence Road, Tottenham Hale: 47 apartments over a commercial ground floor, lit at dusk" fetchpriority="high">
+  <img src="assets/hero-lawrence.jpg" alt="Lawrence Road, Tottenham Hale: brick apartment buildings around a landscaped courtyard" fetchpriority="high">
   <div class="wrap">
-    <h1>Property development and investment, delivered since 2014.</h1>
     <p class="sub">Queenshill is a privately owned developer-operator. We buy well, secure planning, build carefully and return capital to the family offices, institutions and private investors who back our schemes across London, Surrey and Portugal’s Lisbon coast.</p>
     <div class="actions on-dark">
       <a class="btn solid" href="#track-record">See the track record</a>
@@ -350,35 +332,17 @@ body.locked{overflow:hidden}
         <p class="kicker">Track record</p>
         <h2 style="margin-top:14px;max-width:18ch">Thirteen schemes, two countries, one method.</h2>
       </div>
-      <p class="muted" style="max-width:44ch;font-size:.95rem">Select a scheme for photographs and the story of the deal. Project-level returns are shared by Chris personally with qualifying investors who ask.</p>
+      <p class="muted" style="max-width:44ch;font-size:.95rem">Select a scheme for more photographs and the story of the deal. Project-level returns are discussed personally with qualifying investors.</p>
     </div>
 
     <div class="chapter">
       <div class="ch"><h3>London and Surrey</h3><span>2014 to 2021</span></div>
-      <div class="ledger-wrap">
-      <table class="ledger" id="ledgerUK">
-        <thead><tr><th></th><th>Scheme</th><th>What we did</th><th class="r">Partner equity</th><th class="r">Duration</th><th>Status</th><th></th></tr></thead>
-        <tbody></tbody>
-      </table>
-      </div>
+      <div class="schemes" id="schemesUK"></div>
     </div>
 
     <div class="chapter">
       <div class="ch"><h3>Portugal</h3><span>2022 to present</span></div>
-      <div class="ledger-wrap">
-      <table class="ledger" id="ledgerPT">
-        <thead><tr><th></th><th>Scheme</th><th>What we did</th><th class="r">Partner equity</th><th class="r">Duration</th><th>Status</th><th></th></tr></thead>
-        <tbody></tbody>
-      </table>
-      </div>
-    </div>
-
-    <div class="gate on-dark">
-      <div>
-        <strong>The full track record</strong>
-        <p>Annualised returns on equity, investor counts and the capital structure of every scheme are not published. They are shared personally by Chris, by email, with family offices, institutions and qualifying private investors who introduce themselves first.</p>
-      </div>
-      <a class="btn solid" href="#partner">Request it from Chris</a>
+      <div class="schemes" id="schemesPT"></div>
     </div>
   </div>
 </section>
@@ -476,8 +440,8 @@ body.locked{overflow:hidden}
       </div>
     </div>
     <div>
-      <h3 style="font-size:1.45rem">Request the track record</h3>
-      <p class="muted" style="margin:10px 0 22px;font-size:.95rem">There is nothing to download. Tell Chris who you are and what you are looking for; this sends him an email, and he replies personally, usually within two working days.</p>
+      <h3 style="font-size:1.45rem">Start a conversation</h3>
+      <p class="muted" style="margin:10px 0 22px;font-size:.95rem">Tell Chris who you are and what you are looking for. This sends him an email and he replies personally, usually within two working days.</p>
       <form class="req on-dark" id="reqForm" novalidate>
         <div class="grid2">
           <label>Name<input type="text" id="fName" name="name" required autocomplete="name"></label>
@@ -489,11 +453,11 @@ body.locked{overflow:hidden}
         </select></label>
         <label>What are you looking for?<textarea id="fMsg" name="message" placeholder="Markets, ticket size, hold period, anything else useful"></textarea></label>
         <p class="note">By sending this request you confirm you are a professional, high-net-worth or sophisticated investor, or are enquiring on behalf of one. Nothing on this site is an offer or invitation to invest.</p>
-        <div><button class="btn solid" type="submit">Send request</button></div>
+        <div><button class="btn solid" type="submit">Send</button></div>
       </form>
       <div class="sent" id="sent" role="status">
-        <strong style="font-family:var(--serif);font-size:1.3rem;font-weight:400">Thank you. Your request is ready to send.</strong>
-        <p class="muted" style="margin-top:8px;font-size:.92rem">Your email app should have opened with the request drafted. If it did not, email the same details to the address below and Chris will reply personally.</p>
+        <strong style="font-family:var(--serif);font-size:1.3rem;font-weight:400">Thank you. Your message is ready to send.</strong>
+        <p class="muted" style="margin-top:8px;font-size:.92rem">Your email app should have opened with the message drafted. If it did not, email the same details to the address below and Chris will reply personally.</p>
         <div class="addr"><span id="addrText">chris@queenshill.co</span><button class="copy" id="copyBtn" type="button">Copy address</button></div>
       </div>
     </div>
@@ -533,7 +497,6 @@ body.locked{overflow:hidden}
       <div class="gallery" id="mGallery"></div>
       <div class="facts2" id="mFacts"></div>
       <div class="story" id="mStory"></div>
-      <div class="gated"><span>Annualised return on equity and investor structure for this scheme are shared by Chris personally, on request.</span><a class="btn" href="#partner" id="mReq">Email Chris</a></div>
     </div>
   </div>
 </div>
@@ -594,19 +557,19 @@ const P = [
   story:["A two-storey villa on Avenida Sabóia, the highest and most exclusive residential avenue in Monte Estoril and a five-minute walk from Tamariz beach, was acquired outright. Plans are approved for part-demolition and a significant high-specification expansion into a five-bedroom villa.","The strategy is to build, let to a corporate or relocating tenant, and refinance on completion to release capital while holding a long-term income asset in one of the fastest-growing prime markets in Europe."]}
 ];
 
-function row(p){
-  const tr=document.createElement("tr"); tr.className="row"; tr.tabIndex=0; tr.setAttribute("role","button"); tr.dataset.id=p.id;
-  const dur = p.months? (p.months%12===0 && p.months>=24 ? (p.months/12)+" years" : p.months+" months") : "On request";
-  tr.innerHTML=`<td><img class="th" src="${p.imgs[0]}" alt="" loading="lazy"></td>
-   <td><div class="name">${p.name}</div><div class="loc">${p.loc}</div></td>
-   <td><div class="what">${p.what}</div></td>
-   <td class="r num" data-l="Partner equity">${p.equity}</td><td class="r num" data-l="Duration">${dur}</td>
-   <td><span class="status${p.live?" live":""}">${p.status}</span></td><td class="open" aria-hidden="true">→</td>`;
-  tr.addEventListener("click",()=>openP(p)); tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openP(p);}});
-  return tr;
+function dur(p){return p.months? (p.months%12===0 && p.months>=24 ? (p.months/12)+" years" : p.months+" months") : "On request";}
+function card(p,lead){
+  const el=document.createElement("article"); el.className="scheme"+(lead?" lead-card":""); el.tabIndex=0; el.setAttribute("role","button"); el.dataset.id=p.id;
+  el.innerHTML=`<div class="pic"><img src="${p.imgs[0]}" alt="${p.name}" loading="lazy"><span class="status${p.live?" live":""}">${p.status}</span></div>
+   <div class="cap"><div><div class="name">${p.name}</div><div class="loc">${p.loc}</div></div>
+   <div class="meta"><div><div class="v num">${p.equity}</div><div class="l">Partner equity</div></div><div><div class="v num">${dur(p)}</div><div class="l">Duration</div></div></div>
+   <p class="what">${p.what}</p></div>`;
+  el.addEventListener("click",()=>openP(p)); el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openP(p);}});
+  return el;
 }
-const uk=document.querySelector("#ledgerUK tbody"), pt=document.querySelector("#ledgerPT tbody");
-P.forEach(p=>(p.chap==="UK"?uk:pt).appendChild(row(p)));
+const uk=document.getElementById("schemesUK"), pt=document.getElementById("schemesPT");
+P.filter(p=>p.chap==="UK").forEach((p,i)=>uk.appendChild(card(p,i===0)));
+P.filter(p=>p.chap==="PT").forEach((p,i)=>pt.appendChild(card(p,i===0)));
 
 const modal=document.getElementById("modal");
 let lastFocus=null;
@@ -618,8 +581,7 @@ function openP(p){
   const g=document.getElementById("mGallery"); g.innerHTML=""; g.className="gallery"+(p.imgs.length===1?" one":p.imgs.length===2?" two":"");
   p.imgs.slice(0,3).forEach((s,i)=>{const im=document.createElement("img"); im.src=s; im.alt=p.name+(i?" (view "+(i+1)+")":""); g.appendChild(im);});
   const f=document.getElementById("mFacts"); f.innerHTML=p.facts.map(x=>`<div><div class="v num">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("");
-  const dur = p.months? (p.months%12===0 && p.months>=24 ? (p.months/12)+" years" : p.months+" months") : "On request";
-  f.innerHTML += `<div><div class="v num">${p.equity}</div><div class="l">Partner equity</div></div><div><div class="v num">${dur}</div><div class="l">Timeline</div></div><div><div class="v">${p.status}</div><div class="l">Status</div></div>`;
+  f.innerHTML += `<div><div class="v num">${p.equity}</div><div class="l">Partner equity</div></div><div><div class="v num">${dur(p)}</div><div class="l">Timeline</div></div><div><div class="v">${p.status}</div><div class="l">Status</div></div>`;
   document.getElementById("mStory").innerHTML=p.story.map(s=>`<p>${s}</p>`).join("");
   modal.classList.add("open"); document.body.classList.add("locked");
   document.getElementById("mClose").focus();
@@ -627,7 +589,6 @@ function openP(p){
 }
 function closeP(){modal.classList.remove("open");document.body.classList.remove("locked");history.replaceState(null,""," ");if(lastFocus)lastFocus.focus();}
 document.getElementById("mClose").addEventListener("click",closeP);
-document.getElementById("mReq").addEventListener("click",closeP);
 modal.addEventListener("click",e=>{if(e.target===modal)closeP();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeP();});
 const h=(location.hash||"").slice(1); const hp=P.find(p=>p.id===h); if(hp){openP(hp);}
@@ -641,8 +602,8 @@ form.addEventListener("submit",e=>{
   e.preventDefault();
   const v=id=>document.getElementById(id).value.trim();
   if(!v("fName")||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("fEmail"))){ (v("fName")?document.getElementById("fEmail"):document.getElementById("fName")).focus(); return; }
-  const body=`Name: ${v("fName")}\nFirm: ${v("fFirm")}\nEmail: ${v("fEmail")}\nInvestor type: ${v("fType")}\n\n${v("fMsg")}\n\nPlease send me the Queenshill track record.`;
-  const href="mailto:chris@queenshill.co?subject="+encodeURIComponent("Track record request – "+v("fName")+(v("fFirm")?", "+v("fFirm"):""))+"&body="+encodeURIComponent(body);
+  const body=`Name: ${v("fName")}\nFirm: ${v("fFirm")}\nEmail: ${v("fEmail")}\nInvestor type: ${v("fType")}\n\n${v("fMsg")}`;
+  const href="mailto:chris@queenshill.co?subject="+encodeURIComponent("Queenshill enquiry – "+v("fName")+(v("fFirm")?", "+v("fFirm"):""))+"&body="+encodeURIComponent(body);
   try{window.location.href=href;}catch(_){}
   form.hidden=true; document.getElementById("sent").classList.add("show");
 });
